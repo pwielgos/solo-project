@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  Link,
 } from 'react-router-dom';
 
 import {connect} from 'react-redux';
@@ -16,6 +17,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import SearchPage from '../SearchPage/SearchPage';
 
 import './App.css';
 
@@ -29,6 +31,8 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
+        <Link to="/search">Search</Link>
+        <Route path="/search" component={SearchPage}/>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -64,4 +68,10 @@ class App extends Component {
   )}
 }
 
-export default connect()(App);
+const mapStateToProps = reduxState => {
+  return {
+    reduxState: reduxState
+  }
+}
+
+export default connect(mapStateToProps)(App);
