@@ -4,41 +4,47 @@ import SearchResults from '../SearchResults/SearchResults.js';
 
 class SearchPage extends Component {
     state = {
-        search: '',
+        searchQuery: '',
     }
 
     handleInputChange = (event) => {
-        console.log('event.target.value', event.target.value);
         this.setState({
-            search: event.target.value
+            searchQuery: event.target.value
         })
     }
 
     artworkSearch = () => {
-       this.props.dispatch({
-           type: 'GET_ARTWORK',
-           payload: this.state.search
-       }) 
-       console.log('this.state.search');
+        this.props.dispatch({
+            type: 'GET_ARTWORK',
+            payload: this.state.searchQuery
+        })
     }
-  
+
+    // handleImageClick = (selectedArtwork) => {
+    //     this.props.dispatch({ type: 'GET_DETAILS', payload: selectedArtwork })
+    //     this.props.history.push('/details')
+    // }
+
     render() {
         return (
             <div>
                 <h1>Search</h1>
-                <input type="text" onChange={this.handleInputChange}></input> 
+                <input type="text" onChange={this.handleInputChange}></input>
                 <button onClick={this.artworkSearch}>Search</button>
-                {/* {this.props.reduxState.searchReducer.map((searchItem)=>{
-                    return(
+                {this.props.reduxState.search.map((searchItem) => {
+                    return (
                         <>
-                        <SearchResults artwork={searchItem}/>
+                            {/* <SearchResults artwork={searchItem} /> */}
+                            <img src={`${searchItem.thumbnail.url}/full/150,/0/default.jpg`}
+                            // onClick={() => this.handleImageClick(artwork)}
+                            />
                         </>
                     )
-                    })} */}
+                })}
             </div>
-        )
+        );
     }
-};
+}
 
 const mapStateToProps = reduxState => {
     return {
@@ -46,4 +52,4 @@ const mapStateToProps = reduxState => {
     }
 }
 
-export default connect(mapStateToProps)(SearchPage);
+export default connect(mapStateToProps)(SearchPage); 

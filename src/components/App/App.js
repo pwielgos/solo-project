@@ -4,7 +4,6 @@ import {
   Route,
   Redirect,
   Switch,
-  Link,
 } from 'react-router-dom';
 
 import {connect} from 'react-redux';
@@ -18,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import SearchPage from '../SearchPage/SearchPage';
+import DetailsPage from '../DetailsPage/DetailsPage';
 
 import './App.css';
 
@@ -31,7 +31,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-        <Link to="/search">Search</Link>
+        <Route path="/details" component={DetailsPage}/>
         <Route path="/search" component={SearchPage}/>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
