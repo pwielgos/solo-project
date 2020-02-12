@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import SearchResults from '../SearchResults/SearchResults.js';
 
 class SearchPage extends Component {
     state = {
-        search: ''
+        search: '',
     }
 
-    handleChange = (event) => {
+    handleInputChange = (event) => {
+        console.log('event.target.value', event.target.value);
         this.setState({
             search: event.target.value
         })
     }
 
-    handleClick = ()=>{
+    artworkSearch = () => {
        this.props.dispatch({
-           type: ''
+           type: 'GET_ARTWORK',
+           payload: this.state.search
        }) 
+       console.log('this.state.search');
     }
   
-
     render() {
         return (
             <div>
-                <header>
-                <input></input>
-                <button>Search</button>
-                </header>
-                {/* {this.props.reduxState.searchReducer.map((artwork) => {
-                    return (
-                        <div>
-                            <img src={`${artwork.thumbnail.url}/full/150,/0/default.jpg`} alt="" />
-                            <h1>{artwork.title}</h1>
-                            <h1>{artwork.artist_title}</h1>
-                        </div>
+                <h1>Search</h1>
+                <input type="text" onChange={this.handleInputChange}></input> 
+                <button onClick={this.artworkSearch}>Search</button>
+                {/* {this.props.reduxState.searchReducer.map((searchItem)=>{
+                    return(
+                        <>
+                        <SearchResults artwork={searchItem}/>
+                        </>
                     )
-                }
-                )} */}
+                    })} */}
             </div>
         )
     }

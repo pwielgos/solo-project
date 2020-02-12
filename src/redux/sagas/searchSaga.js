@@ -1,8 +1,10 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-function* searchImages() {
-    let response = yield axios.get('/random');
+function* searchImages(action) {
+    let response = yield axios.get(`/api/search?searchterm=${action.payload}`);
+    console.log('search images response', response);
+    console.log('search images', action.payload);
     yield put({ type: 'SET_IMAGES', payload: response.data })
 }
 
