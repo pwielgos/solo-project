@@ -10,7 +10,7 @@ router.get('/:id', (req, res) => {
     (`https://aggregator-data.artic.edu/api/v1/artworks/${req.params.id}`)
     .then(response =>{
         console.log('response.data.data', response.data);
-        res.send(response.data.data) 
+        res.send(response.data.data.thumbnail) 
     }).catch(err =>{
         console.log(err);
         res.sendStatus(500)

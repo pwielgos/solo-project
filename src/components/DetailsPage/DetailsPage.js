@@ -5,7 +5,7 @@ class DetailsPage extends Component {
     render() {
         return (
             <ul>
-                
+                <img src={`${this.props.reduxState.detail.url}/full/full/0/default.jpg`}/>
             </ul>
         )
     }
