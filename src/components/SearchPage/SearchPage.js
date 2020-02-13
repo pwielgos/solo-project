@@ -20,10 +20,10 @@ class SearchPage extends Component {
         })
     }
 
-    // handleImageClick = (selectedArtwork) => {
-    //     this.props.dispatch({ type: 'GET_DETAILS', payload: selectedArtwork })
-    //     this.props.history.push('/details')
-    // }
+    handleImageClick = (selectedArtwork) => {
+        this.props.dispatch({ type: 'GET_DETAILS', payload: selectedArtwork })
+        this.props.history.push('/details')
+    }
 
     render() {
         return (
