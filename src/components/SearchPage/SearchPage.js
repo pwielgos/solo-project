@@ -32,14 +32,18 @@ class SearchPage extends Component {
                 <input type="text" onChange={this.handleInputChange}></input>
                 <button onClick={this.artworkSearch}>Search</button>
                 {this.props.reduxState.search.map((searchItem) => {
+                    console.log('map', searchItem.id);
+                    
                     return (
                         <>
                             {/* <SearchResults artwork={searchItem} /> */}
                             <img src={`${searchItem.thumbnail.url}/full/150,/0/default.jpg`}
-                            // onClick={() => this.handleImageClick(artwork)}
+                            onClick={() => this.handleImageClick(searchItem)}
                             />
                         </>
                     )
+                 
+                    
                 })}
             </div>
         );

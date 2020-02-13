@@ -1,5 +1,5 @@
 const detailReducer = (state = [], action) => {
-    if(action.type === 'SET_IMAGES') {
+    if(action.type === 'SET_DETAILS') {
         return action.payload;
     }
     return state;

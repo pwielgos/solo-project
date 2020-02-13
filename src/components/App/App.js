@@ -31,7 +31,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-        {/* <Route path="/details" component={DetailsPage}/> */}
+        <Route path="/details" component={DetailsPage}/>
         <Route path="/search" component={SearchPage}/>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
