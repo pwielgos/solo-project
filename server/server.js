@@ -12,6 +12,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const searchRouter = require('./routes/search.router');
 const detailRouter = require('./routes/detail.router');
+const randomRouter = require('./routes/random.router');
+const galleryRouter = require('./routes/gallery.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,7 +30,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/search/details', detailRouter);
-
+app.use('/api/random', randomRouter);
+app.use('/api/gallery', galleryRouter);
 
 // Serve static files
 app.use(express.static('build'));

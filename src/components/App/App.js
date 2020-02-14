@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import SearchPage from '../SearchPage/SearchPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
+import HomePage from '../HomePage/HomePage';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Nav />
         <Route path="/details" component={DetailsPage}/>
         <Route path="/search" component={SearchPage}/>
+        <Route path="/random" component={HomePage}/>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />

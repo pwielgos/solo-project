@@ -4,6 +4,8 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import searchSaga from './searchSaga';
 import detailSaga from './detailSaga';
+import randomSaga from './randomSaga';
+import gallerySaga from './gallerySaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,5 +21,7 @@ export default function* rootSaga() {
     userSaga(),
     searchSaga(),
     detailSaga(),
+    randomSaga(),
+    gallerySaga(),
   ]);
 }
