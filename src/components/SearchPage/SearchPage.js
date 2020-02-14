@@ -35,12 +35,12 @@ class SearchPage extends Component {
                     console.log('map', searchItem.id);
                     
                     return (
-                        <>
+                        <div className="flex-container">
                             {/* <SearchResults artwork={searchItem} /> */}
                             <img src={`${searchItem.thumbnail.url}/full/150,/0/default.jpg`}
                             onClick={() => this.handleImageClick(searchItem)}
                             />
-                        </>
+                        </div>
                     )
                  
                     

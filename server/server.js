@@ -29,6 +29,7 @@ app.use('/api/user', userRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/search/details', detailRouter);
 
+
 // Serve static files
 app.use(express.static('build'));
 
