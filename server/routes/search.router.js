@@ -3,9 +3,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const axios = require ('axios');
 
-/**
- * GET route template
- */
 router.get('/', (req, res) => {
     console.log('got to /api/search');
     console.log('req.query', req.query);
@@ -20,13 +17,6 @@ router.get('/', (req, res) => {
         console.log(err);
         res.sendStatus(500)
     })
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
 });
 
 module.exports = router;

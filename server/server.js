@@ -9,12 +9,12 @@ const sessionMiddleware = require('./modules/session-middleware');
 const passport = require('./strategies/user.strategy');
 
 // Route includes
-const userRouter = require('./routes/user.router');
-const searchRouter = require('./routes/search.router');
-const detailRouter = require('./routes/detail.router');
-const randomRouter = require('./routes/random.router');
-const galleryRouter = require('./routes/gallery.router');
 const accountRouter = require('./routes/account.router');
+const detailRouter = require('./routes/detail.router');
+const galleryRouter = require('./routes/gallery.router');
+const randomRouter = require('./routes/random.router');
+const searchRouter = require('./routes/search.router');
+const userRouter = require('./routes/user.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,12 +28,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
-app.use('/api/user', userRouter);
-app.use('/api/search', searchRouter);
-app.use('/api/search/details', detailRouter);
-app.use('/api/random', randomRouter);
-app.use('/api/gallery', galleryRouter);
 app.use('/api/account', accountRouter);
+app.use('/api/search/details', detailRouter);
+app.use('/api/gallery', galleryRouter);
+app.use('/api/random', randomRouter);
+app.use('/api/search', searchRouter);
+app.use('/api/user', userRouter);
 
 // Serve static files
 app.use(express.static('build'));

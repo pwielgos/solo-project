@@ -9,8 +9,14 @@ function* postImage(action) {
     yield put({ type: 'SET_GALLERY_IMAGE' })
 }
 
+function* getUserGallery(action){
+    let response = yield axios.get(`/api/account/gallery/${action.payload.id}`)
+    yield put({type: 'SET_USER_GALLERY', payload: response.data})
+}
+
 function* gallerySaga() {
     yield takeEvery('POST_IMAGE', postImage);
+    yield takeEvery('GET_GALLERY_IMAGES', getUserGallery);
 }
 
 export default gallerySaga;

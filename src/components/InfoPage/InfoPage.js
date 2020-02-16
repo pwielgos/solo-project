@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class InfoPage extends Component {
     state = {
@@ -7,10 +8,10 @@ class InfoPage extends Component {
     }
 
     componentDidMount() {
-        this.getImages();
+        this.getUserGalleries();
     }
 
-    getImages() {
+    getUserGalleries() {
         axios({
             method: `GET`, url: `/api/account`
         }).then((response) => {
@@ -22,18 +23,21 @@ class InfoPage extends Component {
         })
     }
 
-    // handleGalleryClick=()=>{
-
-    // }
+    handleGalleryClick = (selectedGallery) => {
+        this.props.dispatch({ type: 'GET_GALLERY_IMAGES', payload: selectedGallery })
+        this.props.history.push('/gallery')
+    }
 
     render() {
         return (
             <div className="card">
                 {this.state.galleryList.map(gallery => {
                     return <div className="container">
-                        <h1 
-                        //onClick={handleGalleryClick}
-                        >{gallery.gallery_name}</h1>
+                        <h1 onClick=
+                        //{this.handleGalleryClick}
+                        {() => this.handleGalleryClick(gallery)}
+                        >
+                            {gallery.gallery_name}</h1>
                     </div>
                 })}
             </div>
@@ -41,4 +45,10 @@ class InfoPage extends Component {
     }
 }
 
-export default InfoPage;
+const mapStateToProps = reduxState => {
+    return {
+        reduxState: reduxState
+    }
+}
+
+export default connect(mapStateToProps)(InfoPage);
