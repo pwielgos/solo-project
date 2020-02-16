@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     (`https://aggregator-data.artic.edu/api/v1/artworks/search?q=${req.query.searchterm}&limit=20`)
     //(`https://aggregator-data.artic.edu/api/v1/artworks/search?q=monet?limit=20`)
     .then(response =>{
-        console.log('response.data.data', response.data);
+        console.log('response.data.data', response.data.data);
         res.send(response.data.data) 
     }).catch(err =>{
         console.log(err);

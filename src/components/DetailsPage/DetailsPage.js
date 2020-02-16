@@ -22,7 +22,9 @@ class DetailsPage extends Component {
                 </select> */}
 
                 <button onClick={() => this.handleClick(this.props.reduxState.detail.url)}>Add</button>
-                {JSON.stringify(this.props.reduxState.detail.url)}
+                {/* {JSON.stringify(this.props.reduxState.detail.url)} */}
+                {/* {JSON.stringify(this.props.reduxState.detail)} doesn't have anything useful besides the url */}
+                {/* {JSON.stringify(this.props.reduxState.search)} */}
             </ul>
         )
     }

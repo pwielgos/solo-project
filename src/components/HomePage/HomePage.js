@@ -13,8 +13,8 @@ class HomePage extends Component {
                     return (
                         <div>
                             <img src={`${artwork.thumbnail.url}/full/150,/0/default.jpg`} alt="" />
-                            <h3>{artwork.title}</h3>
-                            <h3>{artwork.artist_title}</h3>
+                            {/* <h3>{artwork.title}</h3>
+                            <h3>{artwork.artist_title}</h3> */}
                         </div>
                     )
                 }

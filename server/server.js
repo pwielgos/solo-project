@@ -14,6 +14,7 @@ const searchRouter = require('./routes/search.router');
 const detailRouter = require('./routes/detail.router');
 const randomRouter = require('./routes/random.router');
 const galleryRouter = require('./routes/gallery.router');
+const accountRouter = require('./routes/account.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -32,6 +33,7 @@ app.use('/api/search', searchRouter);
 app.use('/api/search/details', detailRouter);
 app.use('/api/random', randomRouter);
 app.use('/api/gallery', galleryRouter);
+app.use('/api/account', accountRouter);
 
 // Serve static files
 app.use(express.static('build'));

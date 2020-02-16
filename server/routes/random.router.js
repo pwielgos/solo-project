@@ -5,9 +5,9 @@ const axios = require ('axios');
 
 router.get('/', (req, res) => {
     axios.get
-    (`https://aggregator-data.artic.edu/api/v1/artworks?&limit=20`)
+    (`https://aggregator-data.artic.edu/api/v1/artworks?&limit=15`)
     .then(response =>{
-        console.log('response.data.data', response.data.data);
+        console.log('response.data.data', response.data);
         res.send(response.data.data) 
     }).catch(err =>{
         console.log(err);

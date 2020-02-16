@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+class InfoPage extends Component {
+    state = {
+        galleryList: []
+    }
 
-const InfoPage = () => (
-  <div>
-    <p>
-      Info Page
-    </p>
-  </div>
-);
+    componentDidMount() {
+        this.getImages();
+    }
+
+    getImages() {
+        axios({
+            method: `GET`, url: `/api/account`
+        }).then((response) => {
+            console.log('back from GET', response);
+            this.setState({ galleryList: response.data });
+        }).catch((err) => {
+            console.log('err getting image', err);
+            alert('Could not get gallery images at this time. Please try again.')
+        })
+    }
+
+    // handleGalleryClick=()=>{
+
+    // }
+
+    render() {
+        return (
+            <div className="card">
+                {this.state.galleryList.map(gallery => {
+                    return <div className="container">
+                        <h1 
+                        //onClick={handleGalleryClick}
+                        >{gallery.gallery_name}</h1>
+                    </div>
+                })}
+            </div>
+        )
+    }
+}
 
 export default InfoPage;
