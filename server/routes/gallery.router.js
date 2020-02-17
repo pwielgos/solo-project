@@ -1,10 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const axios = require('axios');
 
 router.post('/', (req, res) => {
     const galleryItem = req.body.url;
+    console.log('req.body post:', req.body);
     const queryText = `INSERT INTO "artwork" ("image_url") VALUES ($1)`;
     pool.query(queryText, [galleryItem])
         .then(() => { res.sendStatus(200) })

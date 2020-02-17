@@ -1,4 +1,4 @@
-const detailReducer = (state = [], action) => {
+const detailReducer = (state = {}, action) => {
     if(action.type === 'SET_DETAILS') {
         return action.payload;
     }

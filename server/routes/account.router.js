@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-
+//user home page - just displays gallery name for now
 router.get('/', (req, res) => {
   const queryText = `SELECT "gallery_name", "id" from "gallery";`
   console.log('in account GET', req.body)
@@ -16,10 +16,17 @@ router.get('/', (req, res) => {
     })
 })
 
+//gets images from a specific gallery on click of 
+//the gallery name in user home page
 router.get('/gallery/:id', (req, res) => {
   const queryText = 
-  `SELECT "image_url" from "artwork"
-  WHERE "gallery_id"=$1;` 
+  `SELECT "artwork"."image_url", "gallery"."gallery_name"
+  FROM "artwork" JOIN "gallery"
+  ON "artwork"."gallery_id"="gallery"."id"
+  WHERE "gallery"."id" = $1;
+  `
+  // `SELECT "image_url" from "artwork"
+  // WHERE "gallery_id"=$1;`
   console.log('in account/gallery GET', req.params)
   //console.log('req.params.id', [req.params.id]);
   pool.query(queryText, [req.params.id])

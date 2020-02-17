@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 
 class InfoPage extends Component {
     state = {
-        galleryList: []
+        galleryList: [],
+        editModeVisible: false,
+        galleryName: '',
     }
 
     componentDidMount() {
@@ -19,7 +21,7 @@ class InfoPage extends Component {
             this.setState({ galleryList: response.data });
         }).catch((err) => {
             console.log('err getting image', err);
-            alert('Could not get gallery images at this time. Please try again.')
+            alert('Could not get gallery images at this time')
         })
     }
 
@@ -28,18 +30,46 @@ class InfoPage extends Component {
         this.props.history.push('/gallery')
     }
 
+    toggleEdit = () => {
+        this.setState({
+            editModeVisible: !this.state.editModeVisible
+        })
+    }
+
     render() {
+        let DOM;
+        if (this.state.editModeVisible === false) {
+            DOM = (
+                <div className="card">
+                    <header>
+                        <button onClick={this.toggleEdit}>Edit</button>
+                    </header>
+                    {this.state.galleryList.map(gallery => {
+                        return <div className="container">
+                            <h1 onClick={() => this.handleGalleryClick(gallery)}>
+                                {gallery.gallery_name}</h1>
+                        </div>
+                    })}
+                </div>
+            )
+        } else {
+            DOM = (
+                <div className="card">
+                    <header>
+                        <button onClick={this.toggleEdit}>X</button>
+                        <button>Submit</button>
+                    </header>
+                    {this.state.galleryList.map(gallery => {
+                        return <div className="container">
+                            <textarea>{gallery.gallery_name}</textarea>
+                        </div>
+                    })}
+                </div>
+            )
+        }
         return (
-            <div className="card">
-                {this.state.galleryList.map(gallery => {
-                    return <div className="container">
-                        <h1 onClick=
-                        //{this.handleGalleryClick}
-                        {() => this.handleGalleryClick(gallery)}
-                        >
-                            {gallery.gallery_name}</h1>
-                    </div>
-                })}
+            <div>
+                {DOM}
             </div>
         )
     }
@@ -52,3 +82,28 @@ const mapStateToProps = reduxState => {
 }
 
 export default connect(mapStateToProps)(InfoPage);
+
+
+
+// render() {
+//     if (this.state.editModeVisible === false){
+
+//     }
+
+
+
+//     return (
+//         <div className="card">
+//             <header>
+//                 <button onClick={this.toggleEdit}>Edit</button>
+//             </header>
+//             {this.state.galleryList.map(gallery => {
+//                 return <div className="container">
+//                     <h1 onClick={() => this.handleGalleryClick(gallery)}>
+//                         {gallery.gallery_name}</h1>
+//                 </div>
+//             })}
+//         </div>
+//     )
+// }
+// }

@@ -5,10 +5,8 @@ function* searchDetail(action) {
     // console.log('brooooo');
     // console.log(action.payload.id);
     let response = yield axios.get(`/api/search/details/${action.payload.id}`);
- 
-    // let secondResponse = yield axios.get(`/api/search?searchterm=${action.payload}`)
-    yield put({type: 'SET_DETAILS', payload: response.data});
-    // yield put({ type: 'SET_IMAGES', payload: secondResponse.data.data })
+    yield put({type: 'SET_DETAILS', payload: response.data.data.thumbnail.url});
+    //yield put({type: 'SET_DETAILS', title: response.data.data.title});
 }
 
 function* detailSaga() {

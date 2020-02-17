@@ -14,12 +14,13 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import SearchPage from '../SearchPage/SearchPage';
+import AccountGallery from '../AccountGallery/AccountGallery';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import HomePage from '../HomePage/HomePage';
-import AccountGallery from '../AccountGallery/AccountGallery';
+import InfoPage from '../InfoPage/InfoPage';
+import SearchPage from '../SearchPage/SearchPage';
+import UserGalleryDetailPage from '../UserGalleryDetailPage/UserGalleryDetailPage';
+import UserPage from '../UserPage/UserPage';
 
 import './App.css';
 
@@ -36,7 +37,7 @@ class App extends Component {
           <Route path="/details" component={DetailsPage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/random" component={HomePage} />
-
+          
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -67,6 +68,12 @@ class App extends Component {
               exact
               path="/gallery"
               component={AccountGallery}
+            />
+
+            <ProtectedRoute 
+            exact
+            path="/detail" 
+            component={UserGalleryDetailPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

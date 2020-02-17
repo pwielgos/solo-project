@@ -29,8 +29,10 @@ class SearchPage extends Component {
         return (
             <div>
                 <h1>Search</h1>
+                <header>
                 <input type="text" onChange={this.handleInputChange}></input>
                 <button onClick={this.artworkSearch}>Search</button>
+                </header>
                 {this.props.reduxState.search.map((searchItem) => {
                     console.log('map', searchItem.id);
                     

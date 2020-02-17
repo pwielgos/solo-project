@@ -6,10 +6,17 @@ class DetailsPage extends Component {
         this.props.dispatch({ type: 'POST_IMAGE', payload: imageUrl })
     }
 
+    takeToResults = () =>{
+        this.props.history.push('/search')
+    }
+
     render() {
         return (
-            <ul>
-                <img src={`${this.props.reduxState.detail.url}/full/full/0/default.jpg`} />
+            <div>
+                <header>
+                    <button onClick={this.takeToResults}>Back</button>
+                </header>
+                <img src={`${this.props.reduxState.detail}/full/full/0/default.jpg`} />
                 
                 {/* come back to this dropdown functionality later */}
 
@@ -21,11 +28,11 @@ class DetailsPage extends Component {
                     <option value="newGallery">Create New Gallery +</option>
                 </select> */}
 
-                <button onClick={() => this.handleClick(this.props.reduxState.detail.url)}>Add</button>
+                <button onClick={() => this.handleClick(this.props.reduxState.detail)}>Add</button>
                 {/* {JSON.stringify(this.props.reduxState.detail.url)} */}
                 {/* {JSON.stringify(this.props.reduxState.detail)} doesn't have anything useful besides the url */}
                 {/* {JSON.stringify(this.props.reduxState.search)} */}
-            </ul>
+            </div>
         )
     }
 }
