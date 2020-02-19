@@ -20,13 +20,13 @@ class DetailsPage extends Component {
                 
                 {/* come back to this dropdown functionality later */}
 
-                {/* <label for="images">Add to gallery</label> */}
-                {/* <select id="galleries">
+                <label for="galleries">Add to gallery</label>
+                <select id="galleries">
                     <option value="gallery1">Monet</option>
                     <option value="gallery2">photographs</option>
                     <option value="gallery3">cats</option>
                     <option value="newGallery">Create New Gallery +</option>
-                </select> */}
+                </select>
 
                 <button onClick={() => this.handleClick(this.props.reduxState.detail)}>Add</button>
                 {/* {JSON.stringify(this.props.reduxState.detail.url)} */}

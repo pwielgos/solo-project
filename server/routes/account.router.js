@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 //the gallery name in user home page
 router.get('/gallery/:id', (req, res) => {
   const queryText = 
-  `SELECT "artwork"."image_url", "gallery"."gallery_name"
+  `SELECT "artwork"."image_url", "gallery"."gallery_name", "gallery"."id"
   FROM "artwork" JOIN "gallery"
   ON "artwork"."gallery_id"="gallery"."id"
   WHERE "gallery"."id" = $1;
@@ -35,6 +35,39 @@ router.get('/gallery/:id', (req, res) => {
       res.send(result.rows)
     }).catch(err => {
       console.log('error in user galleries GET', err)
+      res.sendStatus(500);
+    })
+})
+
+//edits gallery titles
+router.put('/gallery/:id', (req, res) => {
+  console.log('ready to update gallery name', req.params.id);
+  console.log('req.body', req.body);
+  const queryText = 
+  `UPDATE "gallery"
+  SET "gallery_name"=$1
+  WHERE "gallery"."id"=$2;
+  `
+  pool.query(queryText, [req.body.galleryName, req.params.id])
+    .then(result => {
+      console.log(result.rows)
+      res.send(result.rows)
+    }).catch(err => {
+      console.log('error in user galleries PUT', err)
+      res.sendStatus(500);
+    })
+})
+
+//delete galleries
+router.delete('/gallery/:id', (req, res) => {
+  const queryText = 
+  `DELETE FROM "gallery" WHERE "id"=$1;`
+  pool.query(queryText, [req.params.id])
+    .then(result => {
+      console.log(result.rows)
+      res.send(result.rows)
+    }).catch(err => {
+      console.log('error in user galleries DELETE', err)
       res.sendStatus(500);
     })
 })
