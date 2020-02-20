@@ -2,14 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class DetailsPage extends Component {
+    state = {
+        selectedGalleryId: ''
+    }
+
     componentDidMount = () => {
         this.props.dispatch({
             type: 'GET_USER_GALLERIES',
         })
     }
 
-    handleClick = (imageUrl) => {
-        this.props.dispatch({ type: 'POST_IMAGE', payload: imageUrl })
+    handleChange = (event) => {
+        this.setState({
+            selectedGalleryId: event.target.value
+        })
+    }
+
+    handleClick = (event) => {
+        this.props.dispatch({
+            type: 'POST_IMAGE',
+            payload: {
+                url: this.props.reduxState.detail,
+                gallery_id: this.state.selectedGalleryId
+            }
+        })
     }
 
     takeToResults = () => {
@@ -24,14 +40,15 @@ class DetailsPage extends Component {
                 </header>
                 <img src={`${this.props.reduxState.detail}/full/full/0/default.jpg`} />
                 <label for="galleries">Add to gallery:</label>
-                <select id="galleries">
+                <select id="galleries" onChange={(event) => this.handleChange(event)}>
+                    <option></option>
                     {this.props.reduxState.gallery.map(gallery => {
                         return (
-                            <option value={gallery.gallery_name}>{gallery.gallery_name}</option>
+                            <option value={gallery.id} >{gallery.gallery_name}</option>
                         )
                     })}
                 </select>
-                <button onClick={() => this.handleClick(this.props.reduxState.detail)}>Add</button>
+                <button onClick={() => this.handleClick()}>Add</button>
             </div>
         )
     }

@@ -2,7 +2,8 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postImage(action) {
-    let response = yield axios.post(`/api/gallery`, {url: action.payload});
+    console.log('action.payload postimage', action.payload ); // is just the url
+    yield axios.post(`/api/gallery`, action.payload);
 }
 
 function* getGalleryImages(action){

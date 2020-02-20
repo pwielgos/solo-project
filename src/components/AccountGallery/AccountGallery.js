@@ -25,7 +25,7 @@ class AccountGallery extends Component {
                     console.log('artwork', artwork);
                     return (
                         <div className="flex-container">
-                            <img 
+                            <img
                                 src={`${artwork.image_url}/full/150,/0/default.jpg`}
                                 onClick={() => this.handleImageClick(artwork)} />
                         </div>
