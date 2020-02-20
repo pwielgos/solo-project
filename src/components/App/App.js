@@ -15,6 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
 import AccountGallery from '../AccountGallery/AccountGallery';
+import CreateGalleryPage from '../CreateGalleryPage/CreateGalleryPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import HomePage from '../HomePage/HomePage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -34,10 +35,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          <Route path="/details" component={DetailsPage} />
-          <Route path="/search" component={SearchPage} />
-          <Route path="/random" component={HomePage} />
-          
+         
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -61,6 +59,20 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
+              path="/search"
+              component={SearchPage}
+            />
+             <ProtectedRoute 
+             exact
+             path="/details" component={DetailsPage}
+             />
+            <ProtectedRoute
+              exact
+              path="/random"
+              component={HomePage}
+            />
+            <ProtectedRoute
+              exact
               path="/info"
               component={InfoPage}
             />
@@ -70,10 +82,15 @@ class App extends Component {
               component={AccountGallery}
             />
 
-            <ProtectedRoute 
-            exact
-            path="/detail" 
-            component={UserGalleryDetailPage}
+            <ProtectedRoute
+              exact
+              path="/detail"
+              component={UserGalleryDetailPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/create"
+              component={CreateGalleryPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

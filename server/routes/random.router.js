@@ -5,7 +5,7 @@ const axios = require ('axios');
 
 router.get('/', (req, res) => {
     axios.get
-    (`https://aggregator-data.artic.edu/api/v1/artworks?&limit=15`)
+    (`https://aggregator-data.artic.edu/api/v1/artworks?&limit=30`)
     //Cannot read property 'url' of null (when search results limit is increased)
     .then(response =>{
         console.log('response.data.data', response.data);

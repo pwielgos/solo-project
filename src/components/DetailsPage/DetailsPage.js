@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class DetailsPage extends Component {
     state = {
-        selectedGalleryId: ''
+        selectedGalleryId: '',
     }
 
     componentDidMount = () => {
@@ -19,13 +19,25 @@ class DetailsPage extends Component {
     }
 
     handleClick = (event) => {
-        this.props.dispatch({
-            type: 'POST_IMAGE',
-            payload: {
-                url: this.props.reduxState.detail,
-                gallery_id: this.state.selectedGalleryId
-            }
-        })
+        if (this.state.selectedGalleryId === 'new gallery') {
+            this.props.dispatch({
+                type: 'POST_NEW_GALLERY',
+                payload: {
+                    url: this.props.reduxState.detail,
+                }
+            })
+            this.props.history.push('/create')
+        }
+        else {
+            this.props.dispatch({
+                type: 'POST_IMAGE',
+                payload: {
+                    url: this.props.reduxState.detail,
+                    gallery_id: this.state.selectedGalleryId
+                }
+            })
+        }
+        console.log('value equals', this.state.selectedGalleryId);
     }
 
     takeToResults = () => {
@@ -38,7 +50,7 @@ class DetailsPage extends Component {
                 <header>
                     <button onClick={this.takeToResults}>Back</button>
                 </header>
-                <img src={`${this.props.reduxState.detail}/full/full/0/default.jpg`} />
+                <img src={`${this.props.reduxState.detail}/full/550,/0/default.jpg`} />
                 <label for="galleries">Add to gallery:</label>
                 <select id="galleries" onChange={(event) => this.handleChange(event)}>
                     <option></option>
@@ -47,6 +59,7 @@ class DetailsPage extends Component {
                             <option value={gallery.id} >{gallery.gallery_name}</option>
                         )
                     })}
+                    <option value="new gallery">Create new gallery +</option>
                 </select>
                 <button onClick={() => this.handleClick()}>Add</button>
             </div>

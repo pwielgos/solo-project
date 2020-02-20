@@ -1,0 +1,15 @@
+.flex-container {
+ 
+    flex-flow: column wrap;
+    display: inline-flex;
+    padding: 25px;
+  }
+
+  .item {
+    border-radius: 7px;
+  }
+
+  .body {
+      padding-left: 50px;
+  }
+ 

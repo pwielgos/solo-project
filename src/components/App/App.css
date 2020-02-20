@@ -8,12 +8,7 @@ body {
     margin: 50px;
 }
 
-.flex-container {
-    /* flex-direction: row; */
-    flex-flow: column wrap;
-    display: inline-flex;
-    padding: 25px;
-  }
+
 
 form {
     background-color: #dbd5d5;

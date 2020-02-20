@@ -6,6 +6,11 @@ function* postImage(action) {
     yield axios.post(`/api/gallery`, action.payload);
 }
 
+function* postNewGallery(action) {
+    console.log('action.payload postimage', action.payload );
+    yield axios.post(`/api/gallery/create`, action.payload);
+}
+
 function* getGalleryImages(action){
     let response = yield axios.get(`/api/account/gallery/${action.payload.id}`)
     yield put({type: 'SET_GALLERY', payload: response.data})
@@ -43,6 +48,7 @@ function* deleteGallery(action) {
 
 function* gallerySaga() {
     yield takeEvery('POST_IMAGE', postImage);
+    yield takeEvery('POST_NEW_GALLERY', postNewGallery);
     yield takeEvery('GET_USER_GALLERIES', getUserGalleries);
     yield takeEvery('GET_GALLERY_IMAGES', getGalleryImages);
     yield takeEvery('GET_GALLERY_DETAIL', getGalleryDetail);//not working :(

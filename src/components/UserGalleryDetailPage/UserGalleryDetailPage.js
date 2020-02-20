@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class UserGalleryDetailPage extends Component {
-
-
     render() {
         return (
             <div>
