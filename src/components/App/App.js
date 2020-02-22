@@ -66,11 +66,7 @@ class App extends Component {
              exact
              path="/details" component={DetailsPage}
              />
-            <ProtectedRoute
-              exact
-              path="/random"
-              component={HomePage}
-            />
+        
             <ProtectedRoute
               exact
               path="/info"

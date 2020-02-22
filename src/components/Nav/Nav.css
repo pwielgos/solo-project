@@ -7,8 +7,11 @@
 } */
 
 .nav {
-  overflow: hidden;
   background-color: white;
+  border-bottom-color: lightslategray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  /* overflow: hidden;
   position: fixed;
   width: 50%;
   bottom: 0;
@@ -17,29 +20,45 @@
   text-align: center;
   margin: auto;
   padding: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; */
+  overflow: hidden;
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+ 
 }
 
 .nav-link {
-  float: left;
+  /* float: left; */
   color: gray;
   background-color: white;
-  text-align: center;
+  /* text-align: center;
   padding: 24px 10px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 15px; */
 
   /* these last two make the logout button in
   the nav bar look like another link */
-  border:none;
+  /* border:none;
   cursor: pointer;
-  outline:0;
+  outline:0; */
+  text-align: center;
+  display: inline-block;
+  padding: 24px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 0px auto;
 }
 
 .nav-link:hover {
-  background-color: black;
-  
+
 }
 
-.nav-right {
+/* .nav-right {
   float: right;
-}
+} */

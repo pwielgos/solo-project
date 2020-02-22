@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { FaAngleLeft } from "react-icons/fa";
 
 class DetailsPage extends Component {
     state = {
@@ -46,12 +47,14 @@ class DetailsPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="body">
                 <header>
-                    <button onClick={this.takeToResults}>Back</button>
+                    <FaAngleLeft onClick={this.takeToResults}/>
                 </header>
-                <img src={`${this.props.reduxState.detail}/full/550,/0/default.jpg`} />
+                <img className="center" src={`${this.props.reduxState.detail}/full/,450/0/default.jpg`} />
+                <br></br>
                 <label for="galleries">Add to gallery:</label>
+                <br></br>
                 <select id="galleries" onChange={(event) => this.handleChange(event)}>
                     <option></option>
                     {this.props.reduxState.gallery.map(gallery => {
@@ -59,9 +62,10 @@ class DetailsPage extends Component {
                             <option value={gallery.id} >{gallery.gallery_name}</option>
                         )
                     })}
+                    <option></option>
                     <option value="new gallery">Create new gallery +</option>
                 </select>
-                <button onClick={() => this.handleClick()}>Add</button>
+                <button className="button" onClick={() => this.handleClick()}>Add</button>
             </div>
         )
     }

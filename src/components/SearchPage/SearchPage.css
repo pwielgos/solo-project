@@ -1,5 +1,4 @@
 .flex-container {
- 
     flex-flow: column wrap;
     display: inline-flex;
     padding: 25px;
@@ -10,6 +9,20 @@
   }
 
   .body {
-      padding-left: 50px;
+      padding-left: 30px;
+      padding-top: 30px;
+  }
+
+  .input {
+    width: 500px;
+    /* outline-color: rgb(230, 230, 230); */
+    border-radius: 25px;
+    background: rgb(235, 235, 235);
+    padding: 20px;
+    height: 7px;
+    font-size: 16px;
+    color: black;
+    border: none;
+    
   }
  

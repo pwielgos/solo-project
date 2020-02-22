@@ -31,19 +31,17 @@ class SearchPage extends Component {
             <div className="body">
                 <h1>Search</h1>
                 <header>
-                <input type="text" placeholder="Search by keyword or artist" 
+                <input className="input" type="text" placeholder="Search by keyword or artist" 
                     onChange={this.handleInputChange}></input>
-                <button onClick={this.artworkSearch}>Search</button>
+                <button className="button" onClick={this.artworkSearch}>Search</button>
                 </header>
                 {this.props.reduxState.search.map((searchItem) => {
                     return (
                         <div className="flex-container">
-                            {/* <SearchResults artwork={searchItem} /> */}
-                            
+                            {/* <SearchResults artwork={searchItem} /> */}   
                             <img className="item" src={`${searchItem.thumbnail.url}/full/,150/0/default.jpg`}
                             onClick={() => this.handleImageClick(searchItem)}/>
                             {/* <p>{searchItem.title}</p> */}
-                            
                         </div>
                     )
                 })}

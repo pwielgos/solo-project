@@ -63,32 +63,37 @@ class InfoPage extends Component {
         let DOM;
         if (this.state.editModeVisible === false) {
             DOM = (
-                <div className="card">
+                <div className="body">
                     <header>
                         <button onClick={this.toggleEdit}>Edit</button>
                     </header>
+                    <br></br>
                     {this.props.reduxState.gallery.map(gallery => {
-                        return <div className="container">
-                            <h1 onClick={() => this.handleGalleryClick(gallery)}>
+                        return ( 
+                            <div className="card">
+                            <h1 className="flex-container" onClick={() => this.handleGalleryClick(gallery)}>
                                 {gallery.gallery_name}</h1>
-                        </div>
+                                </div>
+                        )
                     })}
                 </div>
             )
         } else {
             DOM = (
-                <div className="card">
+                <div className="body">
                     <header>
                         <button onClick={this.toggleEdit}>X</button>
-                        {/* <button onClick={(event)=> this.saveEdit(event)}>Submit</button> */}
                     </header>
+                    {JSON.stringify(this.props.reduxState.reducer)}
                     {this.props.reduxState.gallery.map(gallery => {
-                        return <div className="container">
-                            <textarea className="textArea"
+                        return (
+                            <div className="card">
+                            <textarea className="flex-container"
                                 onChange={(event) => this.setEdit(event, 'name')}>{gallery.gallery_name}</textarea>
                             <button onClick={(event) => this.saveEdit(event, gallery.id)}>Submit</button>
                             <button onClick={(event) => this.deleteGallery(event, gallery.id)}>Delete</button>
                         </div>
+                        )
                     })}
                 </div>
             )

@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     console.log('got to /api/search');
     console.log('req.query', req.query);
     axios.get
-    (`https://aggregator-data.artic.edu/api/v1/artworks/search?q=${req.query.searchterm}&limit=20`)
+    (`https://aggregator-data.artic.edu/api/v1/artworks/search?q=${req.query.searchterm}&limit=40`)
     //(`https://aggregator-data.artic.edu/api/v1/artworks/search?q=monet?limit=20`)
     .then(response =>{
         console.log('response.data.data', response.data.data);
