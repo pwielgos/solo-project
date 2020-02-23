@@ -29,7 +29,7 @@ class SearchPage extends Component {
     render() {
         return (
             <div className="body">
-                <h1>Search</h1>
+                <h1 className="h1">Search</h1>
                 <header>
                 <input className="input" type="text" placeholder="Search by keyword or artist" 
                     onChange={this.handleInputChange}></input>

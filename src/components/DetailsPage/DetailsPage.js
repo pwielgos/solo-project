@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FaAngleLeft } from "react-icons/fa";
 
+import './DetailsPage.css';
+
 class DetailsPage extends Component {
     state = {
         selectedGalleryId: '',
@@ -11,6 +13,7 @@ class DetailsPage extends Component {
         this.props.dispatch({
             type: 'GET_USER_GALLERIES',
         })
+    
     }
 
     handleChange = (event) => {
@@ -53,19 +56,18 @@ class DetailsPage extends Component {
                 </header>
                 <img className="center" src={`${this.props.reduxState.detail}/full/,450/0/default.jpg`} />
                 <br></br>
-                <label for="galleries">Add to gallery:</label>
-                <br></br>
-                <select id="galleries" onChange={(event) => this.handleChange(event)}>
-                    <option></option>
+                <div className="dropdown">
+                <select className="gallery" onChange={(event) => this.handleChange(event)}>
+                    <option>Add to gallery:</option>
                     {this.props.reduxState.gallery.map(gallery => {
                         return (
                             <option value={gallery.id} >{gallery.gallery_name}</option>
                         )
                     })}
-                    <option></option>
                     <option value="new gallery">Create new gallery +</option>
                 </select>
                 <button className="button" onClick={() => this.handleClick()}>Add</button>
+                </div>
             </div>
         )
     }

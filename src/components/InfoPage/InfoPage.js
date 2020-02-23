@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './InfoPage.css';
+
 class InfoPage extends Component {
     state = {
         galleryList: [],
@@ -69,11 +71,12 @@ class InfoPage extends Component {
                     </header>
                     <br></br>
                     {this.props.reduxState.gallery.map(gallery => {
-                        return ( 
+                        return (
                             <div className="card">
-                            <h1 className="flex-container" onClick={() => this.handleGalleryClick(gallery)}>
-                                {gallery.gallery_name}</h1>
-                                </div>
+                                <img className="image" src={`${gallery.key_image}/full/full/0/default.jpg`}></img>
+                                <div className="text" onClick={() => this.handleGalleryClick(gallery)}>
+                                    {gallery.gallery_name}</div>    
+                            </div>
                         )
                     })}
                 </div>
@@ -84,15 +87,14 @@ class InfoPage extends Component {
                     <header>
                         <button onClick={this.toggleEdit}>X</button>
                     </header>
-                    {JSON.stringify(this.props.reduxState.reducer)}
                     {this.props.reduxState.gallery.map(gallery => {
                         return (
-                            <div className="card">
-                            <textarea className="flex-container"
-                                onChange={(event) => this.setEdit(event, 'name')}>{gallery.gallery_name}</textarea>
-                            <button onClick={(event) => this.saveEdit(event, gallery.id)}>Submit</button>
-                            <button onClick={(event) => this.deleteGallery(event, gallery.id)}>Delete</button>
-                        </div>
+                            <div>
+                                <textarea className="flex-container"
+                                    onChange={(event) => this.setEdit(event, 'name')}>{gallery.gallery_name}</textarea>
+                                <button onClick={(event) => this.saveEdit(event, gallery.id)}>Submit</button>
+                                <button onClick={(event) => this.deleteGallery(event, gallery.id)}>Delete</button>
+                            </div>
                         )
                     })}
                 </div>

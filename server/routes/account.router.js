@@ -4,7 +4,7 @@ const router = express.Router();
 
 //user home page - just displays gallery name for now
 router.get('/', (req, res) => {
-  const queryText = `SELECT "gallery_name", "id" from "gallery";`
+  const queryText = `SELECT "gallery_name", "id", "key_image" from "gallery";`
   console.log('in account GET', req.body)
   pool.query(queryText)
     .then(result => {
