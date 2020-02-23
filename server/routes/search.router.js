@@ -18,4 +18,17 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/essentials', (req, res) => {
+    console.log('got to /api/search/essentials');
+    console.log('req.query', req.query);
+    axios.get(`https://aggregator-data.artic.edu/api/v1/artworks/search?limit=50`)
+    .then(response =>{
+        console.log('response.data.data', response.data.data);
+        res.send(response.data.data) 
+    }).catch(err =>{
+        console.log(err);
+        res.sendStatus(500)
+    })
+});
+
 module.exports = router;
