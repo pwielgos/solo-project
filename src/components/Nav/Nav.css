@@ -1,3 +1,21 @@
 .nav {
-    color: turquoise;
-}
+    background-color: white;
+    border-bottom-color: lightslategray;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  overflow: hidden;
+  text-align: right;
+  }
+  
+  .nav-link {
+   color: black;
+    padding: 24px 16px;
+    text-decoration: none;
+    font-size: 20px;
+
+  }
+  
+  .nav-link:hover {
+  background-color: rgb(235, 235, 235);;
+  }
+  

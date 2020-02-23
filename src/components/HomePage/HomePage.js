@@ -16,6 +16,7 @@ class HomePage extends Component {
     render() {
         return (
             <div className="body">
+                <div className="header">THE COLLECTION</div>
             {this.props.reduxState.search.map((searchItem) => {
                 return (
                     <div className="flex-container"> 
