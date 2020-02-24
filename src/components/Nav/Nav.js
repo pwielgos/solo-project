@@ -7,9 +7,9 @@ import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    {/* <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
-    </Link> */}
+    <Link to="/essentials">
+      <h2 className="nav-title">ArtTracker</h2>
+    </Link>
     <div className="nav-right">
       {/* <Link className="nav-link" to="/home"> */}
       {/* Show this link if they are logged in or not,

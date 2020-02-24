@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 router.get('/essentials', (req, res) => {
     console.log('got to /api/search/essentials');
     console.log('req.query', req.query);
-    axios.get(`https://aggregator-data.artic.edu/api/v1/artworks/search?limit=50`)
+    axios.get(`https://aggregator-data.artic.edu/api/v1/artworks/search?limit=60`)
     .then(response =>{
         console.log('response.data.data', response.data.data);
         res.send(response.data.data) 
