@@ -21,11 +21,13 @@
 
 
 .nav-title {
+  float: left;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: inline-block;
   color: black;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
  .nav-left {
