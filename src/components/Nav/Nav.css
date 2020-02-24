@@ -18,4 +18,17 @@
   .nav-link:hover {
   background-color: rgb(235, 235, 235);;
   }
+
+
+.nav-title {
+  font-size: 24px;
+  font-weight: 700;
+  display: inline-block;
+  color: black;
+  padding-left: 10px;
+}
+
+ .nav-left {
+
+ }
   
